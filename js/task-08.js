@@ -11,6 +11,6 @@ ref.form.addEventListener('submit', event => {
   if (email.value === '' || password.value === '') {
     return alert('все поля должны быть заполнены');
   }
-  console.log(`Login: ${email.value}, Password: ${password.value}`);
+  console.log({ Login: email.value, Password: password.value });
   event.currentTarget.reset();
 });

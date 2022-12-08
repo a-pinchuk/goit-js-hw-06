@@ -9,24 +9,28 @@ const ref = {
   input: document.querySelector('input'),
 };
 
-ref.createBtn.addEventListener('click', createBoxes(4));
-ref.destroyBtn.addEventListener('click', deleteBoxes);
-ref.input.addEventListener('click', () => {
-  console.log(parseInt(ref.input.value));
+ref.createBtn.addEventListener('click', () => {
+  let boxesAdd = createBoxes(ref.input.value);
+  ref.boxes.append(...boxesAdd);
 });
 
+ref.destroyBtn.addEventListener('click', deleteBoxes);
+
 function createBoxes(amount) {
-  console.log(amount);
   const newArray = [];
 
   for (let i = 0; i < amount; i++) {
-    newArray.push(document.createElement('div'));
+    const newDivElem = document.createElement('div');
+    newDivElem.style.height = `${30 + 10 * i}px`;
+    newDivElem.style.weight = `${30 + 10 * i}px`;
+    newDivElem.style.background = getRandomHexColor();
+    newArray.push(newDivElem);
   }
-  ref.boxes.append(...newArray);
+  return newArray;
 }
 
 function deleteBoxes() {
-  ref.boxes.remove();
+  ref.boxes.innerHTML = '';
 }
 
 console.log(ref.boxes);
