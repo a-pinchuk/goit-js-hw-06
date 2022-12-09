@@ -4,8 +4,5 @@ const ref = {
 };
 
 ref.input.addEventListener('input', event => {
-  ref.span.textContent = 'Anonymous';
-  if (event.currentTarget.value !== '') {
-    ref.span.textContent = event.currentTarget.value;
-  }
+  ref.span.textContent = event.currentTarget.value ? event.currentTarget.value : 'Anonymous';
 });
